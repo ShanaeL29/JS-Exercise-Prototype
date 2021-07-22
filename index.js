@@ -64,6 +64,7 @@ const leo = new Person("Leo", 18);
 
 shanae.eat("pizza");
 shanae.eat("taco");
+shanae.eat("sushi");
 shanae.eat("pasta");
 shanae.eat("sandwich");
 
@@ -129,8 +130,9 @@ Baby.prototype.play = function () {
 }
 
 const elijah = new Baby("Elijah", 6, "dinosaur")
-elijah.play()
-console.log(elijah)
+elijah.play();
+console.log(elijah.play())
+console.log(elijah);
 
 elijah.eat("pizza");
 console.log(elijah.stomach);
