@@ -39,9 +39,41 @@ Airplane.prototype.land = function () {
         + It should return a string with `name` and `age`. Example: "Mary, 50"
 */
 
-function Person() {
-  
+function Person(name, age) {//1 by 1
+  this.name = name;
+  this.age = age;
+  this.stomach = [];
 }
+
+Person.prototype.eat = function (edible) {
+  if (this.stomach.length < 10) {
+    this.stomach.push(edible);
+  }//if its not less than 10 the food is not going to push so we don't really need an else here
+}
+
+Person.prototype.poop = function () {
+  this.stomach = [];//set back to empty array to empty the stomach
+}
+
+Person.prototype.toString = function () {
+  return `${this.name}, ${this.age}`;
+}
+
+const shanae = new Person("Shanae", 29);
+const leo = new Person("Leo", 18);
+
+shanae.eat("pizza");
+shanae.eat("taco");
+shanae.eat("pasta");
+shanae.eat("sandwich");
+
+console.log(shanae.stomach);
+
+shanae.poop();
+
+console.log(shanae.stomach);
+
+console.log(shanae.toString());
 
 
 
@@ -63,10 +95,22 @@ function Person() {
         + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
 */
 
-function Car() {
-  
+function Car(model, milesPerGallon) {
+  this.model = model;
+  this.milesPerGallon = milesPerGallon;
+  this.tank = 0;
+  this.odometer = 0;
 }
 
+Car.prototype.fill = function (gallons) {
+  return this.tank += gallons;
+}
+
+const kia = new Car("Kia", 60);
+kia.fill(10);
+console.log(kia);
+
+//
 
 /*
   TASK 3
@@ -75,9 +119,24 @@ function Car() {
     - Besides the methods on Person.prototype, babies have the ability to `.play()`:
         + Should return a string "Playing with x", x being the favorite toy.
 */
-function Baby() {
- 
+function Baby(name, age, favoriteToy) {
+  Person.call(this, name, age)
+  this.favoriteToy = favoriteToy;
 }
+Baby.prototype = Object.create(Person.prototype);
+Baby.prototype.play = function () {
+  return `Playing with ${this.favoriteToy}`
+}
+
+const elijah = new Baby("Elijah", 6, "dinosaur")
+elijah.play()
+console.log(elijah)
+
+elijah.eat("pizza");
+console.log(elijah.stomach);
+elijah.poop();
+console.log(elijah.stomach);
+console.log(elijah.toString());
 
 
 /* 
@@ -93,14 +152,14 @@ function Baby() {
 ///////// END OF CHALLENGE /////////
 
 /* 🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑 Please do not modify anything below this line 🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑 */
-function foo(){
+function foo() {
   console.log('its working!');
   return 'bar';
 }
 foo();
 module.exports = {
   foo,
-  Person, 
+  Person,
   Car,
   Baby
 }
