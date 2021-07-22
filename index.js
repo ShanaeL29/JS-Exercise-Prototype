@@ -144,10 +144,10 @@ console.log(elijah.toString());
 /* 
   TASK 4
   In your own words explain the four principles for the "this" keyword below:
-  1. 
-  2. 
-  3. 
-  4. 
+  1. The first principle is window binding. When "this" is in the global scope it will return the window object. If none of the other rules apply "this" will default to the window. The window object is an error and we do not want this.
+  2. The next principle is implicit binding. In this principle "this" refers to the object to the left of the dot when a function is called.
+  3. The third principle of "this" is new binding. "this" refers to the newly created object that the constructor function creates. When we call the function we have to use the "new" keyword.
+  4. The last principle is explicit binding. "this" is explicitly bound when we use .call or .apply to bind an object.
 */
 
 
